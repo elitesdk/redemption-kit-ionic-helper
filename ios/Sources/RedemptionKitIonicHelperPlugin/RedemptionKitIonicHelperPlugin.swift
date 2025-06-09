@@ -70,6 +70,7 @@ public class RedemptionKitIonicHelperPlugin: CAPPlugin, CAPBridgedPlugin {
 extension RedemptionKitIonicHelperPlugin: LRRedemptionKitHandler {
     func sdkLoggedOut() {
         print("\(#function)")
+        self.notifyListeners("sdkLogoutEvent", data: [:])
     }
 }
 
