@@ -385,11 +385,13 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
 
     @Override
     public void sdkLoggedOut() {
-
+        notifyListeners("sdkLogoutEvent", new JSObject());
     }
 
     @Override
     public void sdkSessionNotifier(boolean b) {
-
+        JSObject ret = new JSObject();
+        ret.put("isSessionValid", b);
+        notifyListeners("sdkSessionNotifierEvent", ret);
     }
 }
