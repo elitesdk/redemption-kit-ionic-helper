@@ -60,6 +60,9 @@ public class RedemptionKitIonicHelperPlugin: CAPPlugin, CAPBridgedPlugin {
                     customerID: customerID,
                     sessionTimeout: timeOut
                 )
+                call.resolve([
+                    "value": "Success"
+                ])
             } catch {
                 call.reject(error.localizedDescription, nil, error, nil)
             }

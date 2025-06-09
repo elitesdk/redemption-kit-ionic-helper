@@ -1,4 +1,4 @@
 export interface RedemptionKitIonicHelperPlugin {
-  initializeAndLaunch(options: { value: string, name: string }): Promise<{ value: string }>;
+  initializeAndLaunch(options: { apiKey: string, customerID: string, sessionTimeout: number }): Promise<{ value: string }>;
   
 }
