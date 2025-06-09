@@ -1,6 +1,6 @@
 {
   "name": "redemption-kit-ionic-helper",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Plugin ti integrate ELite Finfinity SDK in IONIC app",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
