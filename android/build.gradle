@@ -52,7 +52,6 @@ allprojects {
         google()
         mavenCentral()
 
-
     }
 }
 
@@ -63,5 +62,5 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
-    implementation ("com.loylty:elite-android-sdk-test:0.0.114")
+    implementation ("com.loylty:elite-android-sdk-test:0.0.115")
 }
