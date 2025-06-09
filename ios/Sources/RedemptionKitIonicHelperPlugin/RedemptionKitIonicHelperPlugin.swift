@@ -72,6 +72,11 @@ extension RedemptionKitIonicHelperPlugin: LRRedemptionKitHandler {
         print("\(#function)")
         self.notifyListeners("sdkLogoutEvent", data: [:])
     }
+    
+    func sdkSessionNotifier(isSessionValid: Bool) {
+        print("\(#function) : isSessionValid : \(isSessionValid)")
+        self.notifyListeners("sdkSessionNotifierEvent", data: ["isSessionValid": isSessionValid])
+    }
 }
 
 //class CustomViewController: UIViewController, LRSDKDelegate {
