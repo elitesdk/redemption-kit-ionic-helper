@@ -71,12 +71,12 @@ public class RedemptionKitIonicHelperPlugin: CAPPlugin, CAPBridgedPlugin {
 }
 
 extension RedemptionKitIonicHelperPlugin: LRRedemptionKitHandler {
-    func sdkLoggedOut() {
+    public func sdkLoggedOut() {
         print("\(#function)")
         self.notifyListeners("sdkLogoutEvent", data: [:])
     }
     
-    func sdkSessionNotifier(isSessionValid: Bool) {
+    public func sdkSessionNotifier(isSessionValid: Bool) {
         print("\(#function) : isSessionValid : \(isSessionValid)")
         self.notifyListeners("sdkSessionNotifierEvent", data: ["isSessionValid": isSessionValid])
     }
