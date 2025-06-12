@@ -218,6 +218,12 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
         }));
     }
 
+    @PluginMethod
+    public void clearSession(PluginCall call) {
+        LRRedemptionKit.getInstance().clearSession();
+        call.resolve();
+    }
+
     private LRSearchType getLRSearchType(String type) {
         if (TextUtils.isEmpty(type)) return null;
         else if (type.equalsIgnoreCase("giftVoucherSearch")) return LRSearchType.giftVoucherSearch;
