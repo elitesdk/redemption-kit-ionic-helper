@@ -12,6 +12,7 @@ import com.rewardz.redemptionkit.LRRedemptionKit;
 import com.rewardz.redemptionkit.emum.LROfferType;
 import com.rewardz.redemptionkit.emum.LRProductType;
 import com.rewardz.redemptionkit.emum.LRRedirectionType;
+import com.rewardz.redemptionkit.emum.LRSearchType;
 import com.rewardz.redemptionkit.emum.LRTransactionType;
 import com.rewardz.redemptionkit.interfaces.LRRedemptionKitHandler;
 import com.rewardz.redemptionkit.interfaces.LrErrorCallback;
@@ -44,12 +45,17 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
 
     @PluginMethod
     public void launch(PluginCall call) {
-        LRRedirectionDetails lrRedirectionDetails = new LRRedirectionDetails();
-        lrRedirectionDetails.setType(getLRRedirectionType(call.getString("LRRedirectionType")));
-        lrRedirectionDetails.setTitle(call.getString("title"));
-        lrRedirectionDetails.setValue(call.getString("value"));
+        JSObject jsObject = call.getObject("redirection");
+        LRRedirectionDetails lrRedirectionDetails;
+        if (jsObject != null) {
+            lrRedirectionDetails = new LRRedirectionDetails();
+            lrRedirectionDetails.setType(getLRRedirectionType(call.getString("type")));
+            lrRedirectionDetails.setTitle(call.getString("title"));
+            lrRedirectionDetails.setValue(call.getString("value"));
+        } else lrRedirectionDetails = null;
 
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().launch(getActivity(), null, new LrErrorCallback() {
+
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().launch(getActivity(), lrRedirectionDetails, new LrErrorCallback() {
             @Override
             public void onSuccess() {
                 call.resolve();
@@ -78,8 +84,8 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
     }
 
     @PluginMethod
-    public void getGiftVouchers(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getGiftVouchers(new LrSdkCallback() {
+    public void getPointBalance(PluginCall call) {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getPointBalance(call.getString("kind"), new LrSdkCallback() {
             @Override
             public void onSuccess(String s) {
                 call.resolve(new JSObject().put(value, s));
@@ -93,128 +99,8 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
     }
 
     @PluginMethod
-    public void getGiftVoucherCategories(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getGiftVoucherCategories(new LrSdkCallback() {
-            @Override
-            public void onSuccess(String s) {
-                call.resolve(new JSObject().put(value, s));
-            }
-
-            @Override
-            public void onError(Exception e) {
-                call.reject(e.getMessage(), e);
-            }
-        }));
-    }
-
-    @PluginMethod
-    public void getMerchandiseProducts(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getMerchandiseProducts(getLRProductType(call.getString("LRProductType")), new LrSdkCallback() {
-            @Override
-            public void onSuccess(String s) {
-                call.resolve(new JSObject().put(value, s));
-            }
-
-            @Override
-            public void onError(Exception e) {
-                call.reject(e.getMessage(), e);
-            }
-        }));
-    }
-
-    @PluginMethod
-    public void getMerchandiseCategories(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getMerchandiseCategories(new LrSdkCallback() {
-            @Override
-            public void onSuccess(String s) {
-                call.resolve(new JSObject().put(value, s));
-            }
-
-            @Override
-            public void onError(Exception e) {
-                call.reject(e.getMessage(), e);
-            }
-        }));
-    }
-
-    @PluginMethod
-    public void getRewardGoalDetails(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getRewardGoalDetails(new LrSdkCallback() {
-            @Override
-            public void onSuccess(String s) {
-                call.resolve(new JSObject().put(value, s));
-            }
-
-            @Override
-            public void onError(Exception e) {
-                call.reject(e.getMessage(), e);
-            }
-        }));
-    }
-
-    @PluginMethod
-    public void getBillPayCategories(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getBillPayCategories(new LrSdkCallback() {
-            @Override
-            public void onSuccess(String s) {
-                call.resolve(new JSObject().put(value, s));
-            }
-
-            @Override
-            public void onError(Exception e) {
-                call.reject(e.getMessage(), e);
-            }
-        }));
-    }
-
-    @PluginMethod
-    public void getOffers(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getOffers(getLROfferType(call.getString("LROfferType")), new LrSdkCallback() {
-            @Override
-            public void onSuccess(String s) {
-                call.resolve(new JSObject().put(value, s));
-            }
-
-            @Override
-            public void onError(Exception e) {
-                call.reject(e.getMessage(), e);
-            }
-        }));
-    }
-
-    @PluginMethod
-    public void getOfferCategories(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getOfferCategories(new LrSdkCallback() {
-            @Override
-            public void onSuccess(String s) {
-                call.resolve(new JSObject().put(value, s));
-            }
-
-            @Override
-            public void onError(Exception e) {
-                call.reject(e.getMessage(), e);
-            }
-        }));
-    }
-
-    @PluginMethod
-    public void getProgramPartners(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getProgramPartners(new LrSdkCallback() {
-            @Override
-            public void onSuccess(String s) {
-                call.resolve(new JSObject().put(value, s));
-            }
-
-            @Override
-            public void onError(Exception e) {
-                call.reject(e.getMessage(), e);
-            }
-        }));
-    }
-
-    @PluginMethod
-    public void getBanners(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getBanners(call.getString("moduleName"), new LrSdkCallback() {
+    public void getTransactionHistory(PluginCall call) {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getTransactionHistory(getLRTransactionType(call.getString("transactionType")), getDateFromString(call.getLong("startDate")), getDateFromString(call.getLong("endDate")), new LrSdkCallback() {
             @Override
             public void onSuccess(String s) {
                 call.resolve(new JSObject().put(value, s));
@@ -243,8 +129,8 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
     }
 
     @PluginMethod
-    public void getPointBalance(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getPointBalance(call.getString("kind"), new LrSdkCallback() {
+    public void getBanners(PluginCall call) {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getBanners(call.getString("moduleName"), new LrSdkCallback() {
             @Override
             public void onSuccess(String s) {
                 call.resolve(new JSObject().put(value, s));
@@ -258,8 +144,8 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
     }
 
     @PluginMethod
-    public void getPointExpiryDetails(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getPointExpiryDetails(new LrSdkCallback() {
+    public void getGiftVouchers(PluginCall call) {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getGiftVouchers(new LrSdkCallback() {
             @Override
             public void onSuccess(String s) {
                 call.resolve(new JSObject().put(value, s));
@@ -273,8 +159,8 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
     }
 
     @PluginMethod
-    public void getAccrualDetails(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getAccrualDetails(new LrSdkCallback() {
+    public void getOfferCategories(PluginCall call) {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getOfferCategories(new LrSdkCallback() {
             @Override
             public void onSuccess(String s) {
                 call.resolve(new JSObject().put(value, s));
@@ -288,8 +174,8 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
     }
 
     @PluginMethod
-    public void getTransactionHistory(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getTransactionHistory(getLRTransactionType(call.getString("LRTransactionType")), getDateFromString(call.getString("startDate")), getDateFromString(call.getString("endDate")), new LrSdkCallback() {
+    public void getOffers(PluginCall call) {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getOffers(getLROfferType(call.getString("type")), new LrSdkCallback() {
             @Override
             public void onSuccess(String s) {
                 call.resolve(new JSObject().put(value, s));
@@ -302,18 +188,46 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
         }));
     }
 
-    private LRProductType getLRProductType(String type) {
+    @PluginMethod
+    public void getBillPayCategories(PluginCall call) {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getBillPayCategories(new LrSdkCallback() {
+            @Override
+            public void onSuccess(String s) {
+                call.resolve(new JSObject().put(value, s));
+            }
+
+            @Override
+            public void onError(Exception e) {
+                call.reject(e.getMessage(), e);
+            }
+        }));
+    }
+
+    @PluginMethod
+    public void searchProducts(PluginCall call) {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().searchProducts(getLRSearchType(call.getString("type")), call.getString("keyword"), new LrSdkCallback() {
+            @Override
+            public void onSuccess(String s) {
+                call.resolve(new JSObject().put(value, s));
+            }
+
+            @Override
+            public void onError(Exception e) {
+                call.reject(e.getMessage(), e);
+            }
+        }));
+    }
+
+    private LRSearchType getLRSearchType(String type) {
         if (TextUtils.isEmpty(type)) return null;
-        else if (type.equalsIgnoreCase("recommended")) return LRProductType.recommended;
-        else if (type.equalsIgnoreCase("featured")) return LRProductType.featured;
+        else if (type.equalsIgnoreCase("giftVoucherSearch")) return LRSearchType.giftVoucherSearch;
+        else if (type.equalsIgnoreCase("offerSearch")) return LRSearchType.offerSearch;
         return null;
     }
-
     private LRTransactionType getLRTransactionType(String type) {
         if (TextUtils.isEmpty(type)) return null;
-        else if (type.equalsIgnoreCase("all")) return LRTransactionType.all;
-        else if (type.equalsIgnoreCase("credit")) return LRTransactionType.credit;
-        else if (type.equalsIgnoreCase("featured")) return LRTransactionType.debit;
+        else if (type.equalsIgnoreCase("cr")) return LRTransactionType.credit;
+        else if (type.equalsIgnoreCase("dr")) return LRTransactionType.debit;
         return null;
     }
 
@@ -371,16 +285,8 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
         return null;
     }
 
-    private Date getDateFromString(String dateString) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        Date date = null;
-        try {
-            date = formatter.parse(dateString);
-            System.out.println("Parsed Date: " + date);
-        } catch (Exception e) {
-        }
-
-        return date;
+    private Date getDateFromString(Long epochTime) {
+        return new Date(epochTime);
     }
 
     @Override
