@@ -49,9 +49,9 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
         LRRedirectionDetails lrRedirectionDetails;
         if (jsObject != null) {
             lrRedirectionDetails = new LRRedirectionDetails();
-            lrRedirectionDetails.setType(getLRRedirectionType(call.getString("type")));
-            lrRedirectionDetails.setTitle(call.getString("title"));
-            lrRedirectionDetails.setValue(call.getString("value"));
+            lrRedirectionDetails.setType(getLRRedirectionType(jsObject.getString("type")));
+            lrRedirectionDetails.setTitle(jsObject.getString("title"));
+            lrRedirectionDetails.setValue(jsObject.getString("value"));
         } else lrRedirectionDetails = null;
 
 
