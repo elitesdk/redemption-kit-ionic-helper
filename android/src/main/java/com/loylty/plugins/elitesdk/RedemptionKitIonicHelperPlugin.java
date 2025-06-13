@@ -100,7 +100,7 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
 
     @PluginMethod
     public void getTransactionHistory(PluginCall call) {
-        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getTransactionHistory(getLRTransactionType(call.getString("transactionType")), getDateFromString(call.getLong("startDate")), getDateFromString(call.getLong("endDate")), new LrSdkCallback() {
+        getActivity().runOnUiThread(() -> LRRedemptionKit.getInstance().getTransactionHistory(getLRTransactionType(call.getString("transactionType")), getDateFromString(call.getLong("startDate", 0L)), getDateFromString(call.getLong("endDate", 0L)), new LrSdkCallback() {
             @Override
             public void onSuccess(String s) {
                 call.resolve(new JSObject().put(value, s));
@@ -292,6 +292,7 @@ public class RedemptionKitIonicHelperPlugin extends Plugin implements LRRedempti
     }
 
     private Date getDateFromString(Long epochTime) {
+        if (epochTime == 0) return null;
         return new Date(epochTime);
     }
 

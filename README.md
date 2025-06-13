@@ -52,12 +52,12 @@ initialize(options: { apiKey: string; customerID: string; sessionTimeout: number
 ### launch(...)
 
 ```typescript
-launch(options: { redirection: Object; }) => Promise<{ value: string; }>
+launch(options: { redirection?: Object; }) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                                                        |
-| ------------- | ----------------------------------------------------------- |
-| **`options`** | <code>{ redirection: <a href="#object">Object</a>; }</code> |
+| Param         | Type                                                         |
+| ------------- | ------------------------------------------------------------ |
+| **`options`** | <code>{ redirection?: <a href="#object">Object</a>; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 

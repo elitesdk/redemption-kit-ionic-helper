@@ -3,7 +3,7 @@ import { WebPlugin } from '@capacitor/core';
 import type { RedemptionKitIonicHelperPlugin } from './definitions';
 
 export class RedemptionKitIonicHelperWeb extends WebPlugin implements RedemptionKitIonicHelperPlugin {
-  async initialize(options: { apiKey: string, customerID: string, sessionTimeout: number }): Promise<{ value: string }>{
+  async initialize(options: { apiKey: string, customerID: string, sessionTimeout?: number }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }
@@ -11,11 +11,11 @@ export class RedemptionKitIonicHelperWeb extends WebPlugin implements Redemption
     console.log('options: '+options);
     return {value: ""};
   }
-  async initializeAndLaunch(options: { apiKey: string, customerID: string, sessionTimeout: number }): Promise<{ value: string }>{
+  async initializeAndLaunch(options: { apiKey: string, customerID: string, sessionTimeout?: number }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }
-  async getPointBalance(options: { kind: string }): Promise<{ value: string }>{
+  async getPointBalance(options: { kind?: string }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }
@@ -23,36 +23,36 @@ export class RedemptionKitIonicHelperWeb extends WebPlugin implements Redemption
     console.log('options: '+options);
     return {value: ""};
   }
-  async getRedemptionOptions(options: { }): Promise<{ value: string }>{
-    console.log('options: '+options);
+  async getRedemptionOptions(): Promise<{ value: string }>{
+    console.log('options: ');
     return {value: ""};
   }
   async getBanners(options: { moduleName: string }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }
-  async getGiftVouchers(options: { }): Promise<{ value: string }>{
-    console.log('options: '+options);
+  async getGiftVouchers(): Promise<{ value: string }>{
+    console.log('options: ');
     return {value: ""};
   }
-  async getOfferCategories(options: { }): Promise<{ value: string }>{
-    console.log('options: '+options);
+  async getOfferCategories(): Promise<{ value: string }>{
+    console.log('options: ');
     return {value: ""};
   }
   async getOffers(options: { type: string }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }
-  async getBillPayCategories(options: { }): Promise<{ value: string }>{
-    console.log('options: '+options);
+  async getBillPayCategories(): Promise<{ value: string }>{
+    console.log('options: ');
     return {value: ""};
   }
   async searchProducts(options: { type: string, keyword: string }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }
-  async clearSession(options: { }): Promise<{ value: string }>{
-    console.log('options: '+options);
+  async clearSession(): Promise<{ value: string }>{
+    console.log('options: ');
     return {value: ""};
   }
 }
