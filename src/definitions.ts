@@ -1,6 +1,6 @@
 export interface RedemptionKitIonicHelperPlugin {
   initialize(options: { apiKey: string, customerID: string, sessionTimeout: number }): Promise<{ value: string }>;
-  launch(options: { redirection: Object }): Promise<{ value: string }>;
+  launch(options: { redirection?: Object }): Promise<{ value: string }>;
   initializeAndLaunch(options: { apiKey: string, customerID: string, sessionTimeout: number }): Promise<{ value: string }>;
   getPointBalance(options: { kind: string }): Promise<{ value: string }>;
   getTransactionHistory(options: { transactionType: string, startDate: number, endDate: number }): Promise<{ value: string }>;
