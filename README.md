@@ -52,7 +52,7 @@ initialize(options: { apiKey: string; customerID: string; sessionTimeout?: numbe
 ### launch(...)
 
 ```typescript
-launch(options: { redirection?: Object; }) => Promise<{ value: string; }>
+launch(options?: { redirection?: Object | undefined; } | undefined) => Promise<{ value: string; }>
 ```
 
 | Param         | Type                                                         |
@@ -82,12 +82,12 @@ initializeAndLaunch(options: { apiKey: string; customerID: string; sessionTimeou
 ### getPointBalance(...)
 
 ```typescript
-getPointBalance(options: { kind?: string; }) => Promise<{ value: string; }>
+getPointBalance(options?: { kind: string; } | undefined) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ kind?: string; }</code> |
+| Param         | Type                           |
+| ------------- | ------------------------------ |
+| **`options`** | <code>{ kind: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
