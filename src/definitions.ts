@@ -5,7 +5,7 @@ export interface RedemptionKitIonicHelperPlugin {
   getPointBalance(options?: { kind: string }): Promise<{ value: string }>;
   getTransactionHistory(options: { transactionType?: string, startDate?: number, endDate?: number }): Promise<{ value: string }>;
   getRedemptionOptions(): Promise<{ value: string }>;
-  getBanners(options: { moduleName?: string }): Promise<{ value: string }>;
+  getBanners(options?: { moduleName: string }): Promise<{ value: string }>;
   getGiftVouchers(): Promise<{ value: string }>;
   getOfferCategories(): Promise<{ value: string }>;
   getOffers(options: { type: string }): Promise<{ value: string }>;

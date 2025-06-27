@@ -27,7 +27,7 @@ export class RedemptionKitIonicHelperWeb extends WebPlugin implements Redemption
     console.log('options: ');
     return {value: ""};
   }
-  async getBanners(options: { moduleName: string }): Promise<{ value: string }>{
+  async getBanners(options?: { moduleName: string }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }
