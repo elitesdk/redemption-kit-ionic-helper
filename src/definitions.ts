@@ -1,4 +1,6 @@
-export interface RedemptionKitIonicHelperPlugin {
+import { Plugin } from "@capacitor/core";
+
+export interface RedemptionKitIonicHelperPlugin extends Plugin {
   initialize(options: { apiKey: string, customerID: string, sessionTimeout?: number }): Promise<{ value: string }>;
   launch(options: { redirection?: Object }): Promise<{ value: string }>;
   initializeAndLaunch(options: { apiKey: string, customerID: string, sessionTimeout?: number }): Promise<{ value: string }>;
