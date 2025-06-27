@@ -7,7 +7,7 @@ export class RedemptionKitIonicHelperWeb extends WebPlugin implements Redemption
     console.log('options: '+options);
     return {value: ""};
   }
-  async launch(options: { redirection?: Object }): Promise<{ value: string }>{
+  async launch(options?: { redirection?: Object }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }
@@ -15,7 +15,7 @@ export class RedemptionKitIonicHelperWeb extends WebPlugin implements Redemption
     console.log('options: '+options);
     return {value: ""};
   }
-  async getPointBalance(options: { kind?: string }): Promise<{ value: string }>{
+  async getPointBalance(options?: { kind: string }): Promise<{ value: string }>{
     console.log('options: '+options);
     return {value: ""};
   }

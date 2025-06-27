@@ -2,9 +2,9 @@ import { Plugin } from "@capacitor/core";
 
 export interface RedemptionKitIonicHelperPlugin extends Plugin {
   initialize(options: { apiKey: string, customerID: string, sessionTimeout?: number }): Promise<{ value: string }>;
-  launch(options: { redirection?: Object }): Promise<{ value: string }>;
+  launch(options?: { redirection?: Object }): Promise<{ value: string }>;
   initializeAndLaunch(options: { apiKey: string, customerID: string, sessionTimeout?: number }): Promise<{ value: string }>;
-  getPointBalance(options: { kind?: string }): Promise<{ value: string }>;
+  getPointBalance(options?: { kind: string }): Promise<{ value: string }>;
   getTransactionHistory(options: { transactionType?: string, startDate?: number, endDate?: number }): Promise<{ value: string }>;
   getRedemptionOptions(): Promise<{ value: string }>;
   getBanners(options: { moduleName?: string }): Promise<{ value: string }>;

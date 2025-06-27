@@ -18,14 +18,14 @@ npx cap sync
 * [`initializeAndLaunch(...)`](#initializeandlaunch)
 * [`getPointBalance(...)`](#getpointbalance)
 * [`getTransactionHistory(...)`](#gettransactionhistory)
-* [`getRedemptionOptions(...)`](#getredemptionoptions)
+* [`getRedemptionOptions()`](#getredemptionoptions)
 * [`getBanners(...)`](#getbanners)
-* [`getGiftVouchers(...)`](#getgiftvouchers)
-* [`getOfferCategories(...)`](#getoffercategories)
+* [`getGiftVouchers()`](#getgiftvouchers)
+* [`getOfferCategories()`](#getoffercategories)
 * [`getOffers(...)`](#getoffers)
-* [`getBillPayCategories(...)`](#getbillpaycategories)
+* [`getBillPayCategories()`](#getbillpaycategories)
 * [`searchProducts(...)`](#searchproducts)
-* [`clearSession(...)`](#clearsession)
+* [`clearSession()`](#clearsession)
 * [Interfaces](#interfaces)
 * [Type Aliases](#type-aliases)
 
@@ -37,12 +37,12 @@ npx cap sync
 ### initialize(...)
 
 ```typescript
-initialize(options: { apiKey: string; customerID: string; sessionTimeout: number; }) => Promise<{ value: string; }>
+initialize(options: { apiKey: string; customerID: string; sessionTimeout?: number; }) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                                                                         |
-| ------------- | ---------------------------------------------------------------------------- |
-| **`options`** | <code>{ apiKey: string; customerID: string; sessionTimeout: number; }</code> |
+| Param         | Type                                                                          |
+| ------------- | ----------------------------------------------------------------------------- |
+| **`options`** | <code>{ apiKey: string; customerID: string; sessionTimeout?: number; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -67,12 +67,12 @@ launch(options: { redirection?: Object; }) => Promise<{ value: string; }>
 ### initializeAndLaunch(...)
 
 ```typescript
-initializeAndLaunch(options: { apiKey: string; customerID: string; sessionTimeout: number; }) => Promise<{ value: string; }>
+initializeAndLaunch(options: { apiKey: string; customerID: string; sessionTimeout?: number; }) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                                                                         |
-| ------------- | ---------------------------------------------------------------------------- |
-| **`options`** | <code>{ apiKey: string; customerID: string; sessionTimeout: number; }</code> |
+| Param         | Type                                                                          |
+| ------------- | ----------------------------------------------------------------------------- |
+| **`options`** | <code>{ apiKey: string; customerID: string; sessionTimeout?: number; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -82,12 +82,12 @@ initializeAndLaunch(options: { apiKey: string; customerID: string; sessionTimeou
 ### getPointBalance(...)
 
 ```typescript
-getPointBalance(options: { kind: string; }) => Promise<{ value: string; }>
+getPointBalance(options: { kind?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                           |
-| ------------- | ------------------------------ |
-| **`options`** | <code>{ kind: string; }</code> |
+| Param         | Type                            |
+| ------------- | ------------------------------- |
+| **`options`** | <code>{ kind?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -97,27 +97,23 @@ getPointBalance(options: { kind: string; }) => Promise<{ value: string; }>
 ### getTransactionHistory(...)
 
 ```typescript
-getTransactionHistory(options: { transactionType: string; startDate: number; endDate: number; }) => Promise<{ value: string; }>
+getTransactionHistory(options: { transactionType?: string; startDate?: number; endDate?: number; }) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                                                                          |
-| ------------- | ----------------------------------------------------------------------------- |
-| **`options`** | <code>{ transactionType: string; startDate: number; endDate: number; }</code> |
+| Param         | Type                                                                             |
+| ------------- | -------------------------------------------------------------------------------- |
+| **`options`** | <code>{ transactionType?: string; startDate?: number; endDate?: number; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
 --------------------
 
 
-### getRedemptionOptions(...)
+### getRedemptionOptions()
 
 ```typescript
-getRedemptionOptions(options: {}) => Promise<{ value: string; }>
+getRedemptionOptions() => Promise<{ value: string; }>
 ```
-
-| Param         | Type            |
-| ------------- | --------------- |
-| **`options`** | <code>{}</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -127,42 +123,34 @@ getRedemptionOptions(options: {}) => Promise<{ value: string; }>
 ### getBanners(...)
 
 ```typescript
-getBanners(options: { moduleName: string; }) => Promise<{ value: string; }>
+getBanners(options: { moduleName?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                                 |
-| ------------- | ------------------------------------ |
-| **`options`** | <code>{ moduleName: string; }</code> |
+| Param         | Type                                  |
+| ------------- | ------------------------------------- |
+| **`options`** | <code>{ moduleName?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
 --------------------
 
 
-### getGiftVouchers(...)
+### getGiftVouchers()
 
 ```typescript
-getGiftVouchers(options: {}) => Promise<{ value: string; }>
+getGiftVouchers() => Promise<{ value: string; }>
 ```
-
-| Param         | Type            |
-| ------------- | --------------- |
-| **`options`** | <code>{}</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
 --------------------
 
 
-### getOfferCategories(...)
+### getOfferCategories()
 
 ```typescript
-getOfferCategories(options: {}) => Promise<{ value: string; }>
+getOfferCategories() => Promise<{ value: string; }>
 ```
-
-| Param         | Type            |
-| ------------- | --------------- |
-| **`options`** | <code>{}</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -184,15 +172,11 @@ getOffers(options: { type: string; }) => Promise<{ value: string; }>
 --------------------
 
 
-### getBillPayCategories(...)
+### getBillPayCategories()
 
 ```typescript
-getBillPayCategories(options: {}) => Promise<{ value: string; }>
+getBillPayCategories() => Promise<{ value: string; }>
 ```
-
-| Param         | Type            |
-| ------------- | --------------- |
-| **`options`** | <code>{}</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -214,15 +198,11 @@ searchProducts(options: { type: string; keyword: string; }) => Promise<{ value: 
 --------------------
 
 
-### clearSession(...)
+### clearSession()
 
 ```typescript
-clearSession(options: {}) => Promise<{ value: string; }>
+clearSession() => Promise<{ value: string; }>
 ```
-
-| Param         | Type            |
-| ------------- | --------------- |
-| **`options`** | <code>{}</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
