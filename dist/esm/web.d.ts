@@ -35,7 +35,7 @@ export declare class RedemptionKitIonicHelperWeb extends WebPlugin implements Re
     getRedemptionOptions(): Promise<{
         value: string;
     }>;
-    getBanners(options: {
+    getBanners(options?: {
         moduleName: string;
     }): Promise<{
         value: string;

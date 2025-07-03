@@ -99,12 +99,12 @@
       },
       {
         "name": "getBanners",
-        "signature": "(options: { moduleName?: string; }) => Promise<{ value: string; }>",
+        "signature": "(options?: { moduleName: string; } | undefined) => Promise<{ value: string; }>",
         "parameters": [
           {
             "name": "options",
             "docs": "",
-            "type": "{ moduleName?: string | undefined; }"
+            "type": "{ moduleName: string; } | undefined"
           }
         ],
         "returns": "Promise<{ value: string; }>",

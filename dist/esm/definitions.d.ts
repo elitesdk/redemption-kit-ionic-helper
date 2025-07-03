@@ -1,4 +1,5 @@
-export interface RedemptionKitIonicHelperPlugin {
+import { Plugin } from "@capacitor/core";
+export interface RedemptionKitIonicHelperPlugin extends Plugin {
     initialize(options: {
         apiKey: string;
         customerID: string;
@@ -33,8 +34,8 @@ export interface RedemptionKitIonicHelperPlugin {
     getRedemptionOptions(): Promise<{
         value: string;
     }>;
-    getBanners(options: {
-        moduleName?: string;
+    getBanners(options?: {
+        moduleName: string;
     }): Promise<{
         value: string;
     }>;

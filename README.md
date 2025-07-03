@@ -123,12 +123,12 @@ getRedemptionOptions() => Promise<{ value: string; }>
 ### getBanners(...)
 
 ```typescript
-getBanners(options: { moduleName?: string; }) => Promise<{ value: string; }>
+getBanners(options?: { moduleName: string; } | undefined) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                                  |
-| ------------- | ------------------------------------- |
-| **`options`** | <code>{ moduleName?: string; }</code> |
+| Param         | Type                                 |
+| ------------- | ------------------------------------ |
+| **`options`** | <code>{ moduleName: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
